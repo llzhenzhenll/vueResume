@@ -30,6 +30,6 @@ export default {
     left: 0;
     top:0;
     z-index: -100;
-    opacity:0.8;
+    opacity:0.3;
   }
 </style>
