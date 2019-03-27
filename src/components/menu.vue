@@ -1,8 +1,11 @@
 <template class="menu">
-  <div class="menu">
+  <div class="row">
+    <div class="col-xs-12  col-md-4" >
       <div class="my-name">
-        刘珍珍
+        孙佳亮
       </div>
+    </div>
+    <div class="col-xs-12  col-md-8">
       <ul>
         <li v-for="(item,key) in menuList" :key=key>
           <a
@@ -12,6 +15,7 @@
           >{{item.name}}</a>
         </li>
       </ul>
+    </div>
   </div>
 </template>
 
@@ -76,11 +80,11 @@ a:hover,a.active{
   -webkit-background-clip: text; /*必需加前缀 -webkit- 才支持这个text值 */
   -webkit-text-fill-color: transparent; /*text-fill-color会覆盖color所定义的字体颜色： */
 }
-@media screen and (max-width: 768px){
-  ul{
-    width: 25px;
-    height:25px;
-    overflow: hidden;
-  }
-}
+/*@media screen and (max-width: 768px){*/
+  /*ul{*/
+    /*width: 25px;*/
+    /*height:25px;*/
+    /*overflow: hidden;*/
+  /*}*/
+/*}*/
 </style>

@@ -24,12 +24,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .content{
-    width:70%;margin:0 auto;max-width:1330px
-  }
-  @media screen and (max-width: 768px){
-    .content{
-      width: 90%;
-    }
-  }
+  /*.content{*/
+    /*width:70%;margin:0 auto;max-width:1330px*/
+  /*}*/
+  /*@media screen and (max-width: 768px){*/
+    /*.content{*/
+      /*width: 90%;*/
+    /*}*/
+  /*}*/
 </style>

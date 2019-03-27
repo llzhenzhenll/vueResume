@@ -1,8 +1,10 @@
 <template>
-  <div id="app">
-    <img src="./assets/bg.jpg">
-    <router-view/>
-  </div>
+  <!--<div id="app">-->
+    <div class="container">
+      <img src="./assets/bg.jpg">
+      <router-view/>
+    </div>
+  <!--</div>-->
 </template>
 
 <script>
