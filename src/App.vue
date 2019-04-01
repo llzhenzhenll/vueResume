@@ -1,6 +1,6 @@
 <template>
   <!--<div id="app">-->
-    <div class="container">
+    <div class="container-fluid">
       <img src="./assets/bg.jpg">
       <router-view/>
     </div>
@@ -25,13 +25,13 @@ export default {
   color: #2c3e50;
   /*margin-top: 60px;*/
 }
-  img{
+  .container-fluid>img{
     width: 100%;
     height:100%;
     position:absolute;
     left: 0;
     top:0;
     z-index: -100;
-    opacity:0.3;
+    opacity:0.1;
   }
 </style>

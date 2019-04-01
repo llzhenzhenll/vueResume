@@ -1,15 +1,8 @@
 <template>
   <!-- Stack the columns on mobile by making one full-width and the other half-width -->
   <div class="row">
-      <div class="col-xs-12  col-md-4" >
-        <div class="introductionBox">
-          123
-        </div>
-      </div>
-      <div class="col-xs-12  col-md-8">
-        <div class="phoneBox">
-          456
-        </div>
+      <div class="col-xs-12" >
+        blog
       </div>
   </div>
 </template>
@@ -20,8 +13,7 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
-  },
-  components: { }
+  }
 }
 </script>
 

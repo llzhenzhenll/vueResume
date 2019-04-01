@@ -1,13 +1,23 @@
 <template>
   <div class="content" >
-    <my-menu />
-    <my-home />
+    <div class="row">
+      <div class="col-12">
+        <my-menu />
+      </div>
+      <div class="col-md-4">
+        <my-sidebar />
+      </div>
+      <div class="col-md-8">
+        <my-blog />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import myMenu from '@/components/menu'
-import myHome from '@/components/home/home'
+import mySidebar from '@/components/sidebar'
+import myBlog from '@/components/blog'
 export default {
   name: 'HelloWorld',
   data () {
@@ -17,7 +27,8 @@ export default {
   },
   components: {
     myMenu,
-    myHome
+    mySidebar,
+    myBlog
   }
 }
 </script>

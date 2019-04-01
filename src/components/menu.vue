@@ -1,22 +1,54 @@
 <template class="menu">
-  <div class="row">
-    <div class="col-xs-12  col-md-4" >
-      <div class="my-name">
-        孙佳亮
-      </div>
+  <nav class="navbar navbar-expand-md navbar-light bg-light row">
+    <div class="container">
+    <a class="navbar-brand col-2" href="#">
+      <img src="../assets/logo.png" alt="">
+      LOGO
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse col-10" id="navbarSupportedContent">
+      <!--<div class="row">-->
+        <ul class=" col-8 navbar-nav mr-auto ">
+          <div class="col-4">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">博客 <span class="sr-only">(current)</span></a>
+            </li>
+          </div>
+          <div class="col-4">
+            <li class="nav-item">
+              <a class="nav-link" href="#">关于我 <span class="sr-only">(current)</span></a>
+            </li>
+          </div>
+          <div class="col-4">
+            <li class="nav-item">
+              <a class="nav-link" href="#">和我联系 <span class="sr-only">(current)</span></a>
+            </li>
+          </div>
+          <!--<li class="nav-item dropdown">-->
+          <!--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+          <!--Dropdown-->
+          <!--</a>-->
+          <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+          <!--<a class="dropdown-item" href="#">Action</a>-->
+          <!--<a class="dropdown-item" href="#">Another action</a>-->
+          <!--<div class="dropdown-divider"></div>-->
+          <!--<a class="dropdown-item" href="#">Something else here</a>-->
+          <!--</div>-->
+          <!--</li>-->
+        </ul>
+        <div class=" col-4 input-group">
+          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">@</span>
+          </div>
+        </div>
+      <!--</div>-->
+
     </div>
-    <div class="col-xs-12  col-md-8">
-      <ul>
-        <li v-for="(item,key) in menuList" :key=key>
-          <a
-            v-bind:class="{ active: activeMenu===item.id }"
-            @click="menuClick(item.id)"
-            href="#"
-          >{{item.name}}</a>
-        </li>
-      </ul>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>
@@ -25,13 +57,13 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      activeMenu: 1,
-      menuList: [
-        {id: 1, name: '首页'},
-        {id: 2, name: '关于我'},
-        {id: 3, name: '我的足迹'},
-        {id: 4, name: '联系我'}
-      ]
+      activeMenu: 1
+      // menuList: [
+      //   {id: 1, name: '首页'},
+      //   {id: 2, name: '关于我'},
+      //   {id: 3, name: '我的足迹'},
+      //   {id: 4, name: '联系我'}
+      // ]
     }
   },
   methods: {
@@ -44,47 +76,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+.row{
+  text-align: center;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-  height:100%;
-  line-height: 200px;
-  float: right;
-  margin: 0;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  padding:5px 10px;
-  color: #125A66;
-  text-decoration: none;
-}
-a:hover,a.active{
-  color:#8EE5ED;
-}
-.menu{
-  width:100%;
-  height:200px;
-}
-.my-name{
-  font-size: 30px;
-  float: left;
-  line-height: 200px;
-  background-image: -webkit-linear-gradient(left,#125A66,#C0182F,#F0BD54);
-  -webkit-background-clip: text; /*必需加前缀 -webkit- 才支持这个text值 */
-  -webkit-text-fill-color: transparent; /*text-fill-color会覆盖color所定义的字体颜色： */
-}
-/*@media screen and (max-width: 768px){*/
-  /*ul{*/
-    /*width: 25px;*/
-    /*height:25px;*/
-    /*overflow: hidden;*/
-  /*}*/
-/*}*/
+  .navbar{
+    background-color: transparent !important;
+    border-bottom: 1px solid #ccc;
+  }
+  .active>.nav-link{
+    color:#A2C2A3 !important;
+  }
+  img{
+    width: 60px;
+  }
 </style>
