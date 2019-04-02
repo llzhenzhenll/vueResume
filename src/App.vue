@@ -16,6 +16,7 @@ export default {
 <style>
   html,body,#app{
     height:100%;
+    overflow-x: hidden;
   }
   .container-fluid>img{
     width: 100%;
