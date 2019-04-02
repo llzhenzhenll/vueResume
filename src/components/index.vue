@@ -4,10 +4,10 @@
       <div class="col-12">
         <my-menu />
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" v-if="screenWidth>767">
         <my-sidebar />
       </div>
-      <div class="col-md-8">
+      <div class="col-xs-12 col-md-8">
         <my-blog />
       </div>
     </div>
@@ -22,7 +22,20 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      screenWidth: document.documentElement.clientWidth
+    }
+  },
+  // watch: {
+  //   screenWidth: function (val) { //监听屏幕宽度变化
+  //     // var oIframe = document.getElementById(divId)
+  //     // oIframe.style.width = (Number(val)-120) + 'px'
+  //   }
+  // },
+  mounted () {
+    var _this = this
+    window.onresize = function () { // 定义窗口大小变更通知事件
+      _this.screenWidth = document.documentElement.clientWidth
+      // _this.screenHeight = document.documentElement.clientHeight; //窗口高度
     }
   },
   components: {

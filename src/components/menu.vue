@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-md navbar-light bg-light row">
     <div class="container">
     <a class="navbar-brand col-2" href="#">
-      <img src="../assets/logo.png" alt="">
+      <img src="../assets/logo.jpg" alt="">
       LOGO
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,9 +39,11 @@
           <!--</li>-->
         </ul>
         <div class=" col-4 input-group">
-          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <input type="text" class="form-control" placeholder="search" aria-label="Recipient's username" aria-describedby="basic-addon2">
           <div class="input-group-append">
-            <span class="input-group-text" id="basic-addon2">@</span>
+            <span class="input-group-text" id="basic-addon2">
+              <img src="../assets/search.png" alt="">
+            </span>
           </div>
         </div>
       <!--</div>-->
@@ -86,7 +88,7 @@ export default {
   .active>.nav-link{
     color:#A2C2A3 !important;
   }
-  img{
+  .navbar-brand>img{
     width: 60px;
   }
 </style>

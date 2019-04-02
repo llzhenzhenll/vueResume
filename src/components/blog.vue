@@ -1,17 +1,86 @@
 <template>
   <!-- Stack the columns on mobile by making one full-width and the other half-width -->
-  <div class="row">
-      <div class="col-xs-12" >
-        blog
+    <div>
+      <div class="card"
+           v-for="(item,index) in data"
+           :key=index
+      >
+        <div class="card-body">
+          <h5 class="card-title">{{item.title}}</h5>
+          <div class="cardImgBox"
+               v-bind:style="{backgroundImage:'url(' + item.imgUrl + ')'}"
+          />
+          <span>
+          发布日期：{{item.date}}&nbsp;&nbsp;&nbsp;分类：{{item.classification}}
+        </span>
+          <p class="card-text">{{item.content}}</p>
+        </div>
       </div>
-  </div>
+    </div>
 </template>
 <script>
 export default {
   name: 'home',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      data: [
+        {
+          id: 0,
+          title: '如何添加一篇新博文？',
+          imgUrl: '/static/img/photo.7798c26.jpg',
+          date: '2019-01-01',
+          classification: '心情',
+          content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+        },
+        {
+          id: 1,
+          title: '如何添加一篇新博文？',
+          imgUrl: '/static/img/photo.7798c26.jpg',
+          date: '2019-01-01',
+          classification: '心情',
+          content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+        },
+        {
+          id: 2,
+          title: '如何添加一篇新博文？',
+          imgUrl: '/static/img/photo.7798c26.jpg',
+          date: '2019-01-01',
+          classification: '心情',
+          content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+        },
+        {
+          id: 3,
+          title: '如何添加一篇新博文？',
+          imgUrl: '/static/img/photo.7798c26.jpg',
+          date: '2019-01-01',
+          classification: '心情',
+          content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+        },
+        {
+          id: 4,
+          title: '如何添加一篇新博文？',
+          imgUrl: '/static/img/photo.7798c26.jpg',
+          date: '2019-01-01',
+          classification: '心情',
+          content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+        },
+        {
+          id: 5,
+          title: '如何添加一篇新博文？',
+          imgUrl: '/static/img/photo.7798c26.jpg',
+          date: '2019-01-01',
+          classification: '心情',
+          content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+        },
+        {
+          id: 6,
+          title: '如何添加一篇新博文？',
+          imgUrl: '/static/img/photo.7798c26.jpg',
+          date: '2019-01-01',
+          classification: '心情',
+          content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+        }
+      ]
     }
   }
 }
@@ -24,87 +93,26 @@ export default {
     position: relative;
     min-height: 500px;
   }
-  /*.introductionBox{*/
-    /*width:450px;*/
-    /*height:300px;*/
-    /*background: #CEF2F5;*/
-    /*position: absolute;*/
-    /*left:15%;*/
-    /*top:40px;*/
-    /*z-index: 100;*/
-  /*}*/
-  /*.phoneBox{*/
-    /*width:600px;*/
-    /*height:400px;*/
-    /*position: absolute;*/
-    /*left:10%;*/
-    /*top:0;*/
-    /*z-index: 10;*/
-    /*background: -webkit-radial-gradient(#DEB4B5,#f0f0f0 ); !* Safari 5.1 - 6.0 *!*/
-    /*background: -o-radial-gradient(#DEB4B5,#f0f0f0 ); !* Opera 11.6 - 12.0 *!*/
-    /*background: -moz-radial-gradient(#DEB4B5,#f0f0f0 ); !* Firefox 3.6 - 15 *!*/
-    /*background: radial-gradient(#DEB4B5,#f0f0f0 ); !* 标准的语法 *!*/
-  /*}*/
-  /*@media screen and (max-width: 1200px){*/
-    /*.introductionBox{*/
-      /*width:375px;*/
-      /*height:251px;*/
-      /*left:20%;*/
-      /*top:39px;*/
-    /*}*/
-    /*.phoneBox{*/
-      /*width:510px;*/
-      /*height:328px;*/
-      /*left:10%;*/
-      /*top:0;*/
-    /*}*/
-  /*}*/
-  /*@media screen and (max-width: 1090px){*/
-    /*.introductionBox{*/
-      /*width:350px;*/
-      /*height:250px;*/
-      /*left:20%;*/
-      /*top:25px;*/
-    /*}*/
-    /*.phoneBox{*/
-      /*width:450px;*/
-      /*height:300px;*/
-      /*left:10%;*/
-      /*top:0;*/
-    /*}*/
-  /*}*/
-  /*@media screen and (max-width: 960px){*/
-    /*!*.homeBox{*!*/
-      /*!*left:-6%;*!*/
-    /*!*}*!*/
-    /*.introductionBox{*/
-      /*width:70%;*/
-      /*height:100px;*/
-      /*left:20%;*/
-      /*top:200px;*/
-    /*}*/
-    /*.phoneBox{*/
-      /*width:70%;*/
-      /*height:200px;*/
-      /*left:10%;*/
-      /*top:50px;*/
-    /*}*/
-  /*}*/
-  /*@media screen and (max-width: 992px){*/
-    /*.row>div{*/
-      /*min-height: 100px;*/
-    /*}*/
-    /*.introductionBox{*/
-      /*width:350px;*/
-      /*height:250px;*/
-      /*left:-10%;*/
-      /*top:25px;*/
-    /*}*/
-    /*.phoneBox{*/
-      /*width:450px;*/
-      /*height:300px;*/
-      /*left:8%;*/
-      /*top:0px;*/
-    /*}*/
-  /*}*/
+  .card{
+    width: 100% !important;
+    border: 0 !important;
+    background-color:transparent !important;
+  }
+  .card>.card-body>.cardImgBox{
+    width:100%;
+    height:300px;
+    position: relative;
+    overflow: hidden;
+    background-position: center;
+  }
+  .card-title{
+    color: #A2C2A3;
+  }
+  .card>.card-body>span{
+    font-size: 12px;
+    color: #666;
+  }
+  .card>.card-body>p{
+    color: #333;
+  }
 </style>
