@@ -2,12 +2,11 @@
   <div style="position: relative">
     <nav class="navbar navbar-expand-md navbar-light bg-light row">
       <div class="container">
-        <a class="navbar-brand col-2" href="#">
+        <a style='paddingLeft: 0;' class="navbar-brand col-2" href="#">
           <img src="../assets/logo.jpg" alt="" style="float: left">
           LOGO
         </a>
         <div
-          @click="unScroll"
           style="text-align: right;padding: 0 15px;"
           data-toggle="collapse"
           data-target="#navbarSupportedContent"
@@ -15,108 +14,141 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <button class="navbar-toggler" type="button">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          <router-link :to="{ name:'menuPage',query:{id:activeMenu} }">
+            <button class="navbar-toggler" type="button">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </router-link>
         </div>
-        <div class="collapse navbar-collapse col-10" id="navbarSupportedContent1">
-          <!--<div class="row">-->
-          <ul class="col-8 navbar-nav mr-auto ">
-            <div class="col-sm-12 col-md-4">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">博客 <span class="sr-only">(current)</span></a>
+          <ul
+            v-show="screenWidth>767"
+            class="col-6 navbar-nav mr-auto "
+          >
+            <div class="col-sm-12 col-md-4" v-for="(item,key) in menuList" :key="key">
+              <li
+                class="nav-item"
+                :class="{active:activeMenu===item.id}"
+                @click="menuClick(item.id)"
+              >
+                <router-link :to="item.link" >
+                  {{item.name}}
+                  <span class="sr-only">(current)</span>
+                </router-link>
               </li>
             </div>
-            <div class="col-sm-12 col-md-4">
-              <li class="nav-item">
-                <a class="nav-link" href="#">关于我 <span class="sr-only">(current)</span></a>
-              </li>
-            </div>
-            <div class="col-sm-12 col-md-4">
-              <li class="nav-item">
-                <a class="nav-link" href="#">和我联系 <span class="sr-only">(current)</span></a>
-              </li>
-            </div>
-            <!--<li class="nav-item dropdown">-->
-            <!--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-            <!--Dropdown-->
-            <!--</a>-->
-            <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-            <!--<a class="dropdown-item" href="#">Action</a>-->
-            <!--<a class="dropdown-item" href="#">Another action</a>-->
-            <!--<div class="dropdown-divider"></div>-->
-            <!--<a class="dropdown-item" href="#">Something else here</a>-->
-            <!--</div>-->
-            <!--</li>-->
           </ul>
-          <div class="col-sm-12 col-md-4 input-group">
-            <input type="text" class="form-control" placeholder="search" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <div class="input-group-append">
+          <div
+            v-show="screenWidth>767"
+            class="col-sm-12 col-md-4 input-group"
+            style="paddingRight:35px"
+          >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="search"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+              v-model="value"
+            />
+            <div @click="search" class="input-group-append">
             <span class="input-group-text" id="basic-addon2">
               <img src="../assets/search.png" alt="">
             </span>
             </div>
           </div>
-          <!--</div>-->
-
-        </div>
       </div>
     </nav>
-    <div class="menuPage" :style="[screenHeight]">
-      <button @click="removeUnScroll">返回</button>
-      <ul class=" navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">博客 <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">关于我 <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">和我联系 <span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-    </div>
   </div>
 </template>
 
 <script>
-import $ from 'jquery'
+import { fromJS } from 'immutable'
+import filter from '../utils/filter'
 export default {
   name: 'myMenu',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
       activeMenu: 1,
-      screenHeight: {height: document.documentElement.offsetHeight + 'px'}
-      // menuList: [
-      //   {id: 1, name: '首页'},
-      //   {id: 2, name: '关于我'},
-      //   {id: 3, name: '我的足迹'},
-      //   {id: 4, name: '联系我'}
-      // ]
+      menuList: [
+        {id: 1, name: '博客', link: '/'},
+        {id: 2, name: '关于我', link: '/aboutMe'},
+        {id: 3, name: '和我联系', link: '/contact'}
+      ],
+      value: '',
+      dataList: [
+        {
+          id: 0,
+          title: '如何添加一篇新博文啊？',
+          imgUrl: '/static/img/photo.7798c26.jpg',
+          date: '2019-01-01',
+          classification: '心情',
+          content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+        },
+        {
+          id: 1,
+          title: '如何添加一篇新博文？',
+          imgUrl: '/static/img/photo.7798c26.jpg',
+          date: '2019-01-01',
+          classification: '心情',
+          content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+        },
+        {
+          id: 2,
+          title: '如何添加一篇新博文？',
+          imgUrl: '/static/img/photo.7798c26.jpg',
+          date: '2019-01-01',
+          classification: '心情',
+          content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+        },
+        {
+          id: 3,
+          title: '如何添加一篇新博文？',
+          imgUrl: '/static/img/photo.7798c26.jpg',
+          date: '2019-01-01',
+          classification: '心情',
+          content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+        },
+        {
+          id: 4,
+          title: '如何添加一篇新博文？',
+          imgUrl: '/static/img/photo.7798c26.jpg',
+          date: '2019-01-01',
+          classification: '心情',
+          content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+        },
+        {
+          id: 5,
+          title: '如何添加一篇新博文？',
+          imgUrl: '/static/img/photo.7798c26.jpg',
+          date: '2019-01-01',
+          classification: '心情',
+          content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+        },
+        {
+          id: 6,
+          title: '如何添加一篇新博文？',
+          imgUrl: '/static/img/photo.7798c26.jpg',
+          date: '2019-01-01',
+          classification: '心情',
+          content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+        }
+      ],
+      searchData: []
     }
   },
+  props: ['screenWidth'],
   methods: {
     menuClick: function (id) {
       this.activeMenu = id
     },
-    unScroll: function () {
-      $('.menuPage').animate({left: '-16px'}, 'slow', function (){
-        $('body').css('overflow', 'hidden')
-      })
-    },
-    removeUnScroll: function () {
-      $('.menuPage').animate({left: '2000px'}, 'slow', function (){
-        $('body').css('overflow-y', 'auto')
-      })
-    }
-  },
-  mounted () {
-    var _this = this
-    window.onresize = function () { // 定义窗口大小变更通知事件
-      _this.screenHeight = {height: document.documentElement.offsetHeight + 'px'}
-      // _this.scrollWidth = document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight)
-      // _this.isShow = _this.scrollWidth ? _this.screenWidth > 751 : _this.screenWidth > 767
+    search: function () {
+      this.searchData = filter(
+        {
+          data: fromJS(this.dataList),
+          condition: this.value.split(' '),
+          fields: ['title', 'classification', 'content']
+        }).toJS()
+      console.log(this.searchData)
     }
   }
 }
@@ -131,10 +163,16 @@ export default {
     background-color: transparent !important;
     border-bottom: 1px solid #ccc;
   }
-  .active>.nav-link{
+  .nav-item>a{
+    color:#666;
+    text-decoration: none;
+  }
+.nav-item.active>a, .nav-item>a:hover{
     color:#A2C2A3 !important;
   }
   .nav-link{
+    padding-right: 0 !important;
+    padding-left: 0 !important;
     color:rgba(0,0,0,.5) !important;
   }
   .navbar-brand>img{
@@ -144,17 +182,11 @@ export default {
     margin-right:0;
     line-height: 88px;
   }
+  input:focus{
+    border-color:#ced4da;
+    box-shadow:none;
+  }
   ul li{
     list-style: none;
   }
-.menuPage{
-  width: 100%;
-  position: absolute;
-  padding: 16px;
-  box-sizing: initial;
-  top: 0;
-  left: 2000px;
-  background: #fff;
-  z-index: 1000;
-}
 </style>
