@@ -1,41 +1,54 @@
-<template class="menu">
-  <div class="sidebarBox">
-    <router-link to="/">
-      back
-    </router-link>
-    <h6>博客分类</h6>
-    <ul class="list-group">
-      <li
-        class="list-group-item"
-        v-for="(item, key) in classification"
-        :key=key
-        :class="{ active: isActive===item.id }"
-      >
-        {{item.name}}
-      </li>
-    </ul>
+<template>
+  <div class="aboutMe">
     <h6>关于博主</h6>
-    <img src="../assets/photo.jpg" alt="">
-    <ul class="list-group information">
-      <li class="list-group-item">
-        姓名：sjl
-      </li>
-      <li class="list-group-item">
-        出生日期：2019-01-01
-      </li>
-      <li class="list-group-item">
-        星座：天枰座
-      </li>
-      <li class="list-group-item">
-        居住城市：北京
-      </li>
-      <li class="list-group-item">
-        职业：程序员
-      </li>
-      <li class="list-group-item">
-        爱好：吃、喝、玩、乐
-      </li>
-    </ul>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-4">
+        <img style="width: 100%" src="../assets/photo.jpg" alt="">
+      </div>
+      <div class="col-xs-12 col-sm-12  col-md-8"  style="border-bottom: 1px dashed #A2C2A3;">
+        <div class="row">
+          <div class="col-12">
+            <h6>个人简介</h6>
+            <p>
+              这里是关于我的内容模块，您可以双击这里或者点击编辑按钮来修改内容。这里是关于我的内容模块，
+              您可以双击这里或者点击编辑按钮来修改内容。
+              这里是关于我的内容模块，您可以双击这里或者点击编辑按钮来修改内容。这里是关于我的内容模块，
+              您可以双击这里或者点击编辑按钮来修改内容。
+            </p>
+            <p>
+              这里是关于我的内容模块，您可以双击这里或者点击编辑按钮来修改内容。
+              这里是关于我的内容模块，您可以双击这里或者点击编辑按钮来修改内容。
+              这里是关于我的内容模块，您可以双击这里或者点击编辑按钮来修改内容。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-8">
+        <div class="row" style=" padding: 15px 0;">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <h6>工作经历</h6>
+            <p>
+              这里是关于我的内容模块，
+              <br />
+              编辑按钮来修改内容。
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <h6>获奖情况</h6>
+            <p>
+              这里是关于我的内容模块，
+              <br />
+              编辑按钮来修改内容。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -69,36 +82,31 @@ export default {
     menuClick: function (id) {
       this.activeMenu = id
     }
+  },
+  components: {
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .sidebarBox{
-    padding:20px;
-    color: #666 !important;
+  .aboutMe{
+    padding: 0 35px;
+    color: #666;
+  }
+  .aboutMe h6{
+    /*padding: 15px 0;*/
+    /*border-bottom: 2px solid #A2C2A3;*/
+    font-weight: 500;
+    color: #000;
+    padding-bottom: 20px;
+  }
+  .aboutMe p{
     font-size: 14px;
   }
-  .sidebarBox>h6{
-    padding-bottom: 5px;
+  .aboutMe>h6{
+    padding: 15px 0;
     border-bottom: 2px solid #A2C2A3;
-  }
-  .sidebarBox>img{
-    width: 100%;
-    max-width: 262px;
-  }
-  .information>li{
-    padding-bottom: 0;
-    font-size: 12px;
-  }
-  ul li{
-    background-color:transparent;
-    border:0;
-    padding-left: 0;
-  }
-  li.active{
-    background-color:transparent;
-    color:#A2C2A3
+    font-weight: 600;
   }
 </style>

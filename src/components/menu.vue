@@ -6,29 +6,26 @@
           <img src="../assets/logo.jpg" alt="" style="float: left">
           LOGO
         </a>
-        <div
-          style="text-align: right;padding: 0 15px;"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <router-link :to="{ name:'menuPage',query:{id:activeMenu} }">
-            <button class="navbar-toggler" type="button">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          </router-link>
-        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse col-10" id="navbarSupportedContent">
           <ul
-            v-show="screenWidth>767"
-            class="col-6 navbar-nav mr-auto "
+            :style="{
+              textAlign: screenWidth>767?'center':'left'
+            }"
+            class="col-8 navbar-nav mr-auto "
           >
             <div class="col-sm-12 col-md-4" v-for="(item,key) in menuList" :key="key">
               <li
                 class="nav-item"
                 :class="{active:activeMenu===item.id}"
                 @click="menuClick(item.id)"
+                :style="{padding: screenWidth>767?'':'10px 0'}"
               >
                 <router-link :to="item.link" >
                   {{item.name}}
@@ -38,9 +35,9 @@
             </div>
           </ul>
           <div
-            v-show="screenWidth>767"
+            v-show="searchInput"
+            :style="{textAlign: screenWidth>767?'center':'left'}"
             class="col-sm-12 col-md-4 input-group"
-            style="paddingRight:35px"
           >
             <input
               type="text"
@@ -51,11 +48,12 @@
               v-model="value"
             />
             <div @click="search" class="input-group-append">
-            <span class="input-group-text" id="basic-addon2">
-              <img src="../assets/search.png" alt="">
-            </span>
+          <span class="input-group-text" id="basic-addon2">
+            <img src="../assets/search.png" alt="">
+          </span>
             </div>
           </div>
+        </div>
       </div>
     </nav>
   </div>
@@ -133,7 +131,8 @@ export default {
           content: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
         }
       ],
-      searchData: []
+      searchData: [],
+      searchInput: this.$route.path === '/'
     }
   },
   props: ['screenWidth'],
@@ -149,6 +148,16 @@ export default {
           fields: ['title', 'classification', 'content']
         }).toJS()
       console.log(this.searchData)
+    }
+  },
+  watch: {
+    $route (to, from) {
+      console.log(to, from)
+      if (to.path !== '/') {
+        this.searchInput = false
+      } else {
+        this.searchInput = true
+      }
     }
   }
 }
