@@ -4,7 +4,7 @@
       <my-sidebar />
     </div>
     <div class="col-xs-12 col-md-8">
-      <my-blog />
+      <my-blog :screenWidth="screenWidth"/>
     </div>
   </div>
 </template>

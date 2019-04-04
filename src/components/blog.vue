@@ -1,6 +1,21 @@
 <template>
   <!-- Stack the columns on mobile by making one full-width and the other half-width -->
     <div>
+      <div v-if="screenWidth<768">
+        <h6 style="padding: 20px">博客分类</h6>
+        <div class="row">
+          <div class="col-12">
+            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+              <div style="width: 90%;margin: 0 auto" class="btn-group" role="group" aria-label="First group">
+                <a type="button" class="btn">心情</a>
+                <a type="button" class="btn">教程</a>
+                <a type="button" class="btn">旅行</a>
+                <a type="button" class="btn">美食</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="card"
            v-for="(item,index) in dataList"
            :key=index
@@ -149,6 +164,7 @@ export default {
       loading: false
     }
   },
+  props: ['screenWidth'],
   methods: {
     sleep: function (time) {
       return new Promise((resolve) => setTimeout(resolve, time))
@@ -182,7 +198,7 @@ export default {
   .row>div{
     padding: 0;
     position: relative;
-    min-height: 500px;
+    /*min-height: 500px;*/
   }
   .card{
     width: 100% !important;
@@ -215,5 +231,21 @@ export default {
   }
   .btn{
     box-shadow:none;
+  }
+  .btn-toolbar a{
+    margin-bottom: 0;
+    border: 1px solid #A2C2A3 !important;
+    background-color: #fff;
+    color: #888;
+    outline: none;
+    box-shadow: none;
+  }
+  a{
+    display: inline-block;
+    border: 1px solid #A2C2A3 !important;
+  }
+  .btn-group>.btn-group:not(:first-child)>a.btn, .btn-group>a.btn:not(:first-child){
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 </style>
